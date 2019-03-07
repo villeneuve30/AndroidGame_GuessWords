@@ -9,6 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".AffichageDesScores"></activity>
+        <activity android:name=".Jeu" />
+        <activity android:name=".AjoutDeMot" />
+        <activity android:name=".ChoixTheme" />
+        <activity android:name=".ParametrePartie" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
