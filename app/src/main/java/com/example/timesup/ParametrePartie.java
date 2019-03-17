@@ -56,12 +56,6 @@ public class ParametrePartie extends AppCompatActivity {
         filtre = findViewById(R.id.switch_filtre_xml);
 
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        /*int totalEquipes = sharedpreferences.getInt("EQUIPES", 2);
-        int totalTemps = sharedpreferences.getInt("TEMPS", 15);
-        int totalMots = sharedpreferences.getInt("MOTS", 25);
-        boolean filtreEnfant = sharedpreferences.getBoolean("FILTRE", false);
-
-        System.out.println(totalEquipes+" "+totalTemps+" "+totalMots+" "+filtreEnfant);*/
 
         suivant.setOnClickListener(new View.OnClickListener() {
             @Override

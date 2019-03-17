@@ -8,26 +8,28 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_parametre_xml"
             android:layout_width="45dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="PARAMETRES DE LA PARTIE"
             android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
             android:textSize="18sp" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_equipe_xml"
@@ -51,7 +53,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="center_horizontal"
-            android:text="2" />
+            android:text="2"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <Button
             android:id="@+id/bouton_plus_equipe_xml"
@@ -65,9 +68,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_weight="1">
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_temps_xml"
@@ -91,7 +94,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="center_horizontal"
-            android:text="15" />
+            android:text="15"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <Button
             android:id="@+id/bouton_plus_temps_xml"
@@ -100,12 +104,13 @@
             android:layout_weight="0.5"
             android:text="+" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_weight="1">
+        android:layout_weight="0.2"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_mots_xml"
@@ -129,7 +134,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
             android:gravity="center_horizontal"
-            android:text="25" />
+            android:text="25"
+            android:textColor="@android:color/holo_blue_dark" />
 
         <Button
             android:id="@+id/bouton_plus_mots_xml"
@@ -138,12 +144,13 @@
             android:layout_weight="0.5"
             android:text="+" />
     </LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_gravity="center"
-        android:layout_weight="1">
+        android:layout_weight="0.4"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/label_filtre_xml"
@@ -158,7 +165,8 @@
             android:id="@+id/switch_filtre_xml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:theme="@style/SwitchTheme"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
