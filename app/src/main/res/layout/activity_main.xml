@@ -10,11 +10,17 @@
         android:layout_weight="4"
         android:orientation="vertical">
         <Button
-            android:id="@+id/son"
+            android:id="@+id/xml_son"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Jouer"
-            android:layout_gravity="center"/>
+            android:layout_gravity="right"
+            android:text="son"/>
+        <Button
+            android:id="@+id/xml_vibration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="vibration"
+            android:layout_gravity="right"/>
     </LinearLayout>
 
     <LinearLayout
@@ -23,21 +29,21 @@
         android:layout_weight="2"
         android:orientation="vertical">
     <Button
-        android:id="@+id/premier"
+        android:id="@+id/xml_jouer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Jouer"
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/second"
+        android:id="@+id/xml_ajoutMot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Ajouter des mots"
         android:layout_gravity="center"/>
 
     <Button
-        android:id="@+id/troisieme"
+        android:id="@+id/xml_regles"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Regle du jeu"

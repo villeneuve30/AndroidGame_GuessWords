@@ -1,9 +1,179 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ParametrePartie">
+    android:orientation="vertical">
 
-</android.support.constraint.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/label_parametre_xml"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="PARAMETRES DE LA PARTIE"
+            android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
+            android:textSize="18sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:id="@+id/label_equipe_xml"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Equipes :"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bouton_moins_equipe_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/label_nbEquipe_xml"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="2"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/bouton_plus_equipe_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="+" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/label_temps_xml"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Temps :"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bouton_moins_temps_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/label_nbTemps_xml"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="15"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/bouton_plus_temps_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="+" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/label_mots_xml"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Nombre de mots :"
+            android:textColor="@android:color/black" />
+
+        <Button
+            android:id="@+id/bouton_moins_mots_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="-" />
+
+        <TextView
+            android:id="@+id/label_nbMots_xml"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.1"
+            android:text="25"
+            android:gravity="center_horizontal"/>
+
+        <Button
+            android:id="@+id/bouton_plus_mots_xml"
+            android:layout_width="3dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.5"
+            android:text="+" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/label_filtre_xml"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Filtre enfant :"
+            android:textColor="@android:color/black" />
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/bouton_suivant_xml"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="50dp"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="Suivant"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+    </LinearLayout>
+</LinearLayout>
