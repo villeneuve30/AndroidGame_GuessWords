@@ -47,11 +47,11 @@
 
         <TextView
             android:id="@+id/label_nbEquipe_xml"
-            android:layout_width="10dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="2"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="2" />
 
         <Button
             android:id="@+id/bouton_plus_equipe_xml"
@@ -87,11 +87,11 @@
 
         <TextView
             android:id="@+id/label_nbTemps_xml"
-            android:layout_width="10dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="15"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="15" />
 
         <Button
             android:id="@+id/bouton_plus_temps_xml"
@@ -125,11 +125,11 @@
 
         <TextView
             android:id="@+id/label_nbMots_xml"
-            android:layout_width="10dp"
+            android:layout_width="15dp"
             android:layout_height="wrap_content"
             android:layout_weight="0.1"
-            android:text="25"
-            android:gravity="center_horizontal"/>
+            android:gravity="center_horizontal"
+            android:text="25" />
 
         <Button
             android:id="@+id/bouton_plus_mots_xml"
@@ -155,6 +155,7 @@
             android:textColor="@android:color/black" />
 
         <Switch
+            android:id="@+id/switch_filtre_xml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1" />
