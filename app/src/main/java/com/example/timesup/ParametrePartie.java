@@ -68,7 +68,7 @@ public class ParametrePartie extends AppCompatActivity {
                 editor.putBoolean("FILTRE", filtre.isChecked());
                 editor.commit();
 
-                Intent intent = new Intent(ParametrePartie.this, ChoixTheme.class);
+                Intent intent = new Intent(ParametrePartie.this, Jeu.class);
                 startActivity(intent);
             }
         });

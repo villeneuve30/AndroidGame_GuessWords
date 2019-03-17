@@ -13,7 +13,6 @@
         <activity android:name=".AffichageDesScores" />
         <activity android:name=".Jeu" />
         <activity android:name=".AjoutDeMot" />
-        <activity android:name=".ChoixTheme" />
         <activity android:name=".ParametrePartie" />
         <activity android:name=".MainActivity">
             <intent-filter>
