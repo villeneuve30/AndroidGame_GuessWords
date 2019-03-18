@@ -19,6 +19,25 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /*
+        MotsBDD motBdd = new MotsBDD(this);
+        Mot mot1 = new Mot("Girafe",false);
+        Mot oldMot = motBdd.getMotWithTexte("Girafe");
+
+        if(oldMot == null){
+            System.out.println("Ce mot n'existe pas");
+        }else{
+            System.out.println("Ce mot existe");
+        }
+
+        motBdd.insertMot(mot1);
+
+        if(motBdd.getMotWithTexte(mot1.getTexte()) == null){
+            System.out.println("Ce mot n'existe pas");
+        }else{
+            System.out.println("Ce mot existe");
+        }*/
+
         son = findViewById(R.id.xml_son);
         vibration = findViewById(R.id.xml_vibration);
 
