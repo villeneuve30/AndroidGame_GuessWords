@@ -1,6 +1,7 @@
 package com.example.timesup;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,24 +20,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        /*
         MotsBDD motBdd = new MotsBDD(this);
         Mot mot1 = new Mot("Girafe",false);
-        Mot oldMot = motBdd.getMotWithTexte("Girafe");
 
-        if(oldMot == null){
-            System.out.println("Ce mot n'existe pas");
-        }else{
-            System.out.println("Ce mot existe");
-        }
-
+        motBdd.open();
         motBdd.insertMot(mot1);
-
-        if(motBdd.getMotWithTexte(mot1.getTexte()) == null){
-            System.out.println("Ce mot n'existe pas");
+        Cursor data= motBdd.getAllData();
+        if(data.getCount()==0){
+            System.out.println("pas de mot dans la base");
         }else{
-            System.out.println("Ce mot existe");
-        }*/
+            System.out.println(data.getCount()+" mots dans la base");
+        }
+        StringBuffer buffer = new StringBuffer();
+        data.moveToPosition(1);
+        buffer.append("Id : "+data.getString(0)+"\n ");
+        buffer.append("Mot : "+data.getString(1)+"\n ");
+        buffer.append("Filtre enfant : "+data.getString(2)+"\n ");
+
+        System.out.println("Data "+buffer.toString());
 
         son = findViewById(R.id.xml_son);
         vibration = findViewById(R.id.xml_vibration);

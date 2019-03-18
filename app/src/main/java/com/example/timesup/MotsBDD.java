@@ -60,7 +60,7 @@ public class MotsBDD {
     }
 
     public Mot getMotWithTexte(String texte){
-        Cursor c = bdd.query(TABLE_MOTS, new String[] {COL_ID, COL_MOT, COL_FILTRE},COL_MOT + " LIKE \"" + texte +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_MOTS, new String[]{COL_ID, COL_MOT, COL_FILTRE},COL_MOT + " LIKE \"" + texte +"\"", null, null, null, null);
         return cursorToMot(c);
     }
 
@@ -80,6 +80,10 @@ public class MotsBDD {
         Mot mot = new Mot(c.getString(NUM_COL_MOT), filtre);
         c.close();
         return mot;
-
+    }
+    public Cursor getAllData(){
+        SQLiteDatabase db = maBaseSQLite.getWritableDatabase();
+        Cursor c =db.rawQuery("select * from "+TABLE_MOTS,null );
+        return c;
     }
 }
