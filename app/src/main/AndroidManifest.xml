@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ReglesDuJeu"></activity>
+        <activity android:name=".Round"></activity>
+        <activity android:name=".ReglesDuJeu" />
         <activity android:name=".AffichageDesScores" />
-        <activity android:name=".Jeu" />
+        <activity android:name=".LancementJeu" />
         <activity android:name=".AjoutDeMot" />
         <activity android:name=".ParametrePartie" />
         <activity android:name=".MainActivity">

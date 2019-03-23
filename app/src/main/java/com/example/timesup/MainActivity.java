@@ -91,10 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
             Mot mot1 = new Mot("Girafe",false);
 
-            motsBdd.open();
-            motsBdd.ajout100PremiersMots();
-            motsBdd.close();
-
+            motsBdd.insererLesMotsDeBase();
             motsBdd.afficherTousLesMots();
 
 

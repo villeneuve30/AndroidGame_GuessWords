@@ -1,6 +1,7 @@
 package com.example.timesup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.CountDownTimer;
@@ -12,9 +13,9 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
-public class Jeu extends AppCompatActivity {
+public class LancementJeu extends AppCompatActivity {
 
-    SharedPreferences sharedpreferences;
+    private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
     Button demarrer;
     @Override
@@ -37,15 +38,16 @@ public class Jeu extends AppCompatActivity {
             public void onClick(View v) {
                 demarrer.setClickable(false);
                 demarrer.setTextColor(Color.BLUE);
-                new CountDownTimer(5000, 1000) {
+                new CountDownTimer(3000, 1000) {
 
                     public void onTick(long millisUntilFinished) {
                         demarrer.setText("début dans : " + millisUntilFinished / 1000);
                     }
                     public void onFinish() {
                         demarrer.setText("GO !");
+                        Intent intent = new Intent(LancementJeu.this, Round.class);
+                        startActivity(intent);
                     }
-
                 }.start();
             }
         });

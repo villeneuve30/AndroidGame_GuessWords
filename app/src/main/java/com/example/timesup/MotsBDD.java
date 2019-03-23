@@ -5,6 +5,11 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Random;
+
 import static com.example.timesup.SQLiteDataBaseHelper.CREATE_BDD;
 
 public class MotsBDD {
@@ -19,6 +24,18 @@ public class MotsBDD {
     private static final int NUM_COL_MOT = 1;
     private static final String COL_FILTRE = "FILTRE";
     private static final int NUM_COL_FILTRE = 2;
+
+    private static final String[] tableauMots = {"Mur","Silence","Mouette","Printemps","Ordinateur","Crabe",
+            "Chien","Tambour","Triangle","Pluie","Poivre","Bonbons","Clé","Anneau","Œufs",
+            "Route","Tomate","Cuisinier","Famille","Voler","Loup","Chemise","Lune","Vent","Arbre","Papillon",
+            "Tigre","Fantôme","Cheval","Casserole","Crayon","Professeur","Botte","Nuage",
+            "Abeille","Loupe","Poulet","Camion","Araignée","Pêcheur","Livre","Lit","Ballon",
+            "Rire","Enfant","Montagne","Rapide","Chèvre","Banane","Mer","Soldat","Robinet","Grand-mère","École",
+            "Manchot","Oignon","Serviette","Valise","Argent","Échelle","Brosse","Parapluie","Yaourt",
+            "Éclairage","Fenêtre","Nourriture","Couche","Girafe","Étoile","Serpent","Ouïe","Malade","Sale",
+            "Laitue","Suivre","Burger","Sifflet","Laid","Glace","Guitare","Étudiant","Téléphone","Fromage","Trottoir",
+            "Baignoire","Casque","Charpentier","Rivière","Maillot de bain","Ciseaux","Propre","Poussin","Baleine",
+            "Trompette","Diapositive","Panda","Hélicoptère","Cloche","Poulpe","Escargot","Citrouille"};
 
     private SQLiteDatabase bdd;
     private SQLiteDataBaseHelper maBaseSQLite;
@@ -105,107 +122,28 @@ public class MotsBDD {
         System.out.println(buffer.toString());
     }
 
-    public void ajout100PremiersMots(){
-        this.insertMot(new Mot("Mur",false));
-        this.insertMot(new Mot("Silence",false));
-        this.insertMot(new Mot("Mouette",false));
-        this.insertMot(new Mot("Printemps",false));
-        this.insertMot(new Mot("Ordinateur",false));
-        this.insertMot(new Mot("Crabe",false));
-        this.insertMot(new Mot("Chien",false));
-        this.insertMot(new Mot("Tambour",false));
-        this.insertMot(new Mot("Triangle",false));
-        this.insertMot(new Mot("Pluie",false));
-        this.insertMot(new Mot("Poivre",false));
-        this.insertMot(new Mot("Bonbons",false));
-        this.insertMot(new Mot("Clé",false));
-        this.insertMot(new Mot("Anneau",false));
-        this.insertMot(new Mot("Œufs",false));
-        this.insertMot(new Mot("Route",false));
-        this.insertMot(new Mot("Tomate",false));
-        this.insertMot(new Mot("Cuisinier",false));
-        this.insertMot(new Mot("Famille",false));
-        this.insertMot(new Mot("Voler",false));
-        this.insertMot(new Mot("Loup",false));
-        this.insertMot(new Mot("Chemise",false));
-        this.insertMot(new Mot("Lune",false));
-        this.insertMot(new Mot("Vent",false));
-        this.insertMot(new Mot("Arbre",false));
-        this.insertMot(new Mot("Papillon",false));
-        this.insertMot(new Mot("Tigre",false));
-        this.insertMot(new Mot("Fantôme",false));
-        this.insertMot(new Mot("Cheval",false));
-        this.insertMot(new Mot("Casserole",false));
-        this.insertMot(new Mot("Crayon",false));
-        this.insertMot(new Mot("Professeur",false));
-        this.insertMot(new Mot("Botte",false));
-        this.insertMot(new Mot("Nuage",false));
-        this.insertMot(new Mot("Abeille",false));
-        this.insertMot(new Mot("Loupe",false));
-        this.insertMot(new Mot("Poulet",false));
-        this.insertMot(new Mot("Camion",false));
-        this.insertMot(new Mot("Araignée",false));
-        this.insertMot(new Mot("Pêcheur",false));
-        this.insertMot(new Mot("Livre",false));
-        this.insertMot(new Mot("Lit",false));
-        this.insertMot(new Mot("Ballon",false));
-        this.insertMot(new Mot("Rire",false));
-        this.insertMot(new Mot("Enfant",false));
-        this.insertMot(new Mot("Montagne",false));
-        this.insertMot(new Mot("Rapide",false));
-        this.insertMot(new Mot("Chèvre",false));
-        this.insertMot(new Mot("Banane",false));
-        this.insertMot(new Mot("Mer",false));
-        this.insertMot(new Mot("Soldat",false));
-        this.insertMot(new Mot("Robinet",false));
-        this.insertMot(new Mot("Grand-mère",false));
-        this.insertMot(new Mot("École",false));
-        this.insertMot(new Mot("Manchot",false));
-        this.insertMot(new Mot("Oignon",false));
-        this.insertMot(new Mot("Serviette",false));
-        this.insertMot(new Mot("Valise",false));
-        this.insertMot(new Mot("Argent",false));
-        this.insertMot(new Mot("Échelle",false));
-        this.insertMot(new Mot("Brosse",false));
-        this.insertMot(new Mot("Parapluie",false));
-        this.insertMot(new Mot("Yaourt",false));
-        this.insertMot(new Mot("Éclairage",false));
-        this.insertMot(new Mot("Fenêtre",false));
-        this.insertMot(new Mot("Nourriture",false));
-        this.insertMot(new Mot("Couche",false));
-        this.insertMot(new Mot("Girafe",false));
-        this.insertMot(new Mot("Étoile",false));
-        this.insertMot(new Mot("Serpent",false));
-        this.insertMot(new Mot("Ouïe",false));
-        this.insertMot(new Mot("Malade",false));
-        this.insertMot(new Mot("Sale",false));
-        this.insertMot(new Mot("Laitue",false));
-        this.insertMot(new Mot("Suivre",false));
-        this.insertMot(new Mot("Burger",false));
-        this.insertMot(new Mot("Sifflet",false));
-        this.insertMot(new Mot("Laid",false));
-        this.insertMot(new Mot("Glace",false));
-        this.insertMot(new Mot("Guitare",false));
-        this.insertMot(new Mot("Étudiant",false));
-        this.insertMot(new Mot("Téléphone",false));
-        this.insertMot(new Mot("Fromage",false));
-        this.insertMot(new Mot("Trottoir",false));
-        this.insertMot(new Mot("Baignoire",false));
-        this.insertMot(new Mot("Casque",false));
-        this.insertMot(new Mot("Charpentier",false));
-        this.insertMot(new Mot("Rivière",false));
-        this.insertMot(new Mot("Maillot de bain",false));
-        this.insertMot(new Mot("Ciseaux",false));
-        this.insertMot(new Mot("Propre",false));
-        this.insertMot(new Mot("Poussin",false));
-        this.insertMot(new Mot("Baleine",false));
-        this.insertMot(new Mot("Trompette",false));
-        this.insertMot(new Mot("Diapositive",false));
-        this.insertMot(new Mot("Panda",false));
-        this.insertMot(new Mot("Hélicoptère",false));
-        this.insertMot(new Mot("Cloche",false));
-        this.insertMot(new Mot("Poulpe",false));
-        this.insertMot(new Mot("Escargot",false));
-        this.insertMot(new Mot("Citrouille",false));
+    public ArrayList<String> tableauRandomDeMot(int nbMots){
+
+        ArrayList<String> tabMot = new ArrayList<>();
+        ArrayList<String> tabTemp = new ArrayList<>(Arrays.asList(tableauMots));
+        Random rand = new Random();
+        int randomPosition;
+
+        for(int i=0;i<nbMots;i++){
+            randomPosition = rand.nextInt(tabTemp.size());
+
+            tabMot.add(tabTemp.get(randomPosition));
+
+            tabTemp.remove(randomPosition);
+        }
+        return tabMot;
+    }
+
+    public void insererLesMotsDeBase(){
+        this.open();
+        for(int i=0;i<tableauMots.length;i++){
+            this.insertMot(new Mot(tableauMots[i],false));
+        }
+        this.close();
     }
 }
