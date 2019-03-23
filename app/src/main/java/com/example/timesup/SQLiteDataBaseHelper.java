@@ -1,7 +1,6 @@
 package com.example.timesup;
 
 import android.content.Context;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -12,7 +11,6 @@ public class SQLiteDataBaseHelper extends SQLiteOpenHelper {
     public static final String COL_FILTRE = "FILTRE";
     public static final String CREATE_BDD = "CREATE TABLE "+ TABLE_MOTS +" ("
             +COL_ID+" INTEGER PRIMARY KEY AUTOINCREMENT, " + COL_MOT + " TEXT NOT NULL, " + COL_FILTRE + " INT(1) NOT NULL);";
-
     public SQLiteDataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory,int version){
         super(context,name,factory,version);
     }

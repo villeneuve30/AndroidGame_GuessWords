@@ -1,6 +1,7 @@
 package com.example.timesup;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,40 +9,29 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-    Button son;
-    Button vibration;
+   private Button son;
+   private Button vibration;
 
-    Button jouer;
-    Button ajoutMot;
-    Button regles;
+   private Button jouer;
+   private Button ajoutMot;
+   private Button regles;
+
+    final String PREFS_NAME = "MyPrefsFile";
+    final String PREF_VERSION_CODE_KEY = "version_code";
+    final int DOESNT_EXIST = -1;
+
+    private MotsBDD motsBdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MotsBDD motBdd = new MotsBDD(this);
-        Mot mot1 = new Mot("Girafe",false);
-
-        motBdd.open();
-        motBdd.insertMot(mot1);
-        Cursor data= motBdd.getAllData();
-        if(data.getCount()==0){
-            System.out.println("pas de mot dans la base");
-        }else{
-            System.out.println(data.getCount()+" mots dans la base");
-        }
-        StringBuffer buffer = new StringBuffer();
-        data.moveToPosition(1);
-        buffer.append("Id : "+data.getString(0)+"\n ");
-        buffer.append("Mot : "+data.getString(1)+"\n ");
-        buffer.append("Filtre enfant : "+data.getString(2)+"\n ");
-
-        System.out.println("Data "+buffer.toString());
+        motsBdd = new MotsBDD(this);
+        checkFirstRun();
 
         son = findViewById(R.id.xml_son);
         vibration = findViewById(R.id.xml_vibration);
-
         jouer = findViewById(R.id.xml_jouer);
         ajoutMot = findViewById(R.id.xml_ajoutMot);
         regles = findViewById(R.id.xml_regles);
@@ -78,4 +68,43 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void checkFirstRun(){
+
+        // Get current version code
+        int currentVersionCode = BuildConfig.VERSION_CODE;
+
+        // Get saved version code
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        int savedVersionCode = prefs.getInt(PREF_VERSION_CODE_KEY, DOESNT_EXIST);
+
+        // Check for first run or upgrade
+        if (currentVersionCode == savedVersionCode) {
+
+            // This is just a normal run
+            motsBdd.afficherTousLesMots();
+
+            return;
+
+        } else if (savedVersionCode == DOESNT_EXIST) {
+
+            // TODO This is a new install (or the user cleared the shared preferences)
+
+            Mot mot1 = new Mot("Girafe",false);
+
+            motsBdd.open();
+            motsBdd.ajout100PremiersMots();
+            motsBdd.close();
+
+            motsBdd.afficherTousLesMots();
+
+
+        } else if (currentVersionCode > savedVersionCode) {
+
+            // TODO This is an upgrade
+        }
+
+        // Update the shared preferences with the current version code
+        prefs.edit().putInt(PREF_VERSION_CODE_KEY, currentVersionCode).apply();
+    }
+
 }
