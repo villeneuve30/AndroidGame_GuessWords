@@ -13,25 +13,36 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+
 public class LancementJeu extends AppCompatActivity {
 
     private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
+
+    ArrayList<String> tabMots;
     Button demarrer;
+
+    TextView titreEquipe;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_jeu);
 
         demarrer = findViewById(R.id.bouton_demarrer_xml);
+        titreEquipe = findViewById(R.id.numero_equipe_xml);
+
+        tabMots = getIntent().getStringArrayListExtra("ArrayList");
 
         //On récupère les paramètres prédédent
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        int totalEquipes = sharedpreferences.getInt("EQUIPES", 2);
+        int numEquipe = sharedpreferences.getInt("NUM_EQUIPE",1);
         int totalTemps = sharedpreferences.getInt("TEMPS", 15);
         int totalMots = sharedpreferences.getInt("MOTS", 25);
         boolean filtreEnfant = sharedpreferences.getBoolean("FILTRE", false);
-        System.out.println(totalEquipes+" "+totalTemps+" "+totalMots+" "+filtreEnfant);
+        System.out.println(numEquipe +" "+totalTemps+" "+totalMots+" "+filtreEnfant);
+
+        titreEquipe.setText("Equipe "+numEquipe+" à vous de jouer ! ");
 
         demarrer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -46,6 +57,7 @@ public class LancementJeu extends AppCompatActivity {
                     public void onFinish() {
                         demarrer.setText("GO !");
                         Intent intent = new Intent(LancementJeu.this, Round.class);
+                        intent.putStringArrayListExtra("ArrayList",tabMots );
                         startActivity(intent);
                     }
                 }.start();

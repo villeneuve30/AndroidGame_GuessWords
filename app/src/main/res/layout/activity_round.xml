@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
-        android:text="TextView"
+        android:text="***"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -24,27 +24,45 @@
         android:layout_height="wrap_content"
         android:layout_weight="0.5"
         android:gravity="center"
-        android:text="TextView"
+        android:text="**********"
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/black"
         android:textSize="18sp"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/bouton_valider_xml"
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.5" />
+
+    <Button
+        android:id="@+id/bouton_valider_xml"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.3"
         android:background="@android:color/holo_green_light"
         android:text="Valider"
         android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/bouton_passer_xml"
+    <Space
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:layout_weight="0.3" />
+
+    <Button
+        android:id="@+id/bouton_passer_xml"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_weight="0.3"
         android:background="@android:color/holo_red_dark"
-        android:text="Passer" />
+        android:text="Passer"
+        android:textStyle="bold" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.4" />
 </LinearLayout>

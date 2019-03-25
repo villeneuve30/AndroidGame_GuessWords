@@ -1,6 +1,7 @@
 package com.example.timesup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
@@ -19,6 +20,8 @@ public class Round extends AppCompatActivity {
     private Button passer;
     private int position;
 
+    private int points;
+
     private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
 
@@ -34,12 +37,19 @@ public class Round extends AppCompatActivity {
 
         position = 0;
 
-        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
-        int totalTemps = sharedpreferences.getInt("TEMPS", 15);
-        final int totalMots = sharedpreferences.getInt("MOTS", 25);
+        tabMots = getIntent().getStringArrayListExtra("ArrayList");
 
-        MotsBDD bddTemp = new MotsBDD(this);
-        tabMots = bddTemp.tableauRandomDeMot(totalMots);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+        final int numEquipe = sharedpreferences.getInt("NUM_EQUIPE",1 );
+        final int score_equipe_1 = sharedpreferences.getInt("SCORE_EQUIPE_1",0 );
+        final int score_equipe_2 = sharedpreferences.getInt("SCORE_EQUIPE_2",0 );
+        final int totalTemps = sharedpreferences.getInt("TEMPS", 15);
+
+        if(numEquipe == 1){
+            points = score_equipe_1;
+        }else{
+            points = score_equipe_2;
+        }
 
         mot.setText(tabMots.get(position));
 
@@ -48,7 +58,22 @@ public class Round extends AppCompatActivity {
                tempsRestant.setText(""+millisUntilFinished / 1000);
             }
             public void onFinish() {
-                //Lancer round suivant ELSE fin partie
+                SharedPreferences.Editor editor = sharedpreferences.edit();
+                if(numEquipe == 1){
+                    editor.putInt("SCORE_EQUIPE_1",points);
+                }else {
+                    editor.putInt("SCORE_EQUIPE_2", points);
+                }
+                if(numEquipe == 1) {
+                    editor.putInt("NUM_EQUIPE", 2);
+                }else{
+                    editor.putInt("NUM_EQUIPE",1);
+                }
+                editor.commit();
+
+                Intent intent = new Intent(Round.this, LancementJeu.class);
+                intent.putStringArrayListExtra("ArrayList",tabMots );
+                startActivity(intent);
             }
         }.start();
 
@@ -58,7 +83,8 @@ public class Round extends AppCompatActivity {
                 if(tabMots.size() > 0) tabMots.remove(position);
 
                 if(tabMots.size() == 0) {
-                    mot.setText("FINIIIIII");
+                    Intent intent = new Intent(Round.this, AffichageDesScores.class);
+                    startActivity(intent);
                 }else{
 
                     if(position >= tabMots.size()){
@@ -66,6 +92,7 @@ public class Round extends AppCompatActivity {
                     }
                     mot.setText(tabMots.get(position));
                 }
+                points+=1;
             }
         });
         passer.setOnClickListener(new View.OnClickListener() {
