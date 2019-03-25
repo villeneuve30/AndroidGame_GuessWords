@@ -32,7 +32,7 @@ public class Round extends AppCompatActivity {
 
         tempsRestant = findViewById(R.id.tempsRestant_xml);
         mot = findViewById(R.id.mot_xml);
-        valider=findViewById(R.id.bouton_valider_xml);
+        valider = findViewById(R.id.bouton_valider_xml);
         passer = findViewById(R.id.bouton_passer_xml);
 
         position = 0;
@@ -53,23 +53,13 @@ public class Round extends AppCompatActivity {
 
         mot.setText(tabMots.get(position));
 
-        new CountDownTimer(totalTemps*1000, 1000) {
+        final CountDownTimer timer = new CountDownTimer(totalTemps*1000, 1000) {
             public void onTick(long millisUntilFinished) {
                tempsRestant.setText(""+millisUntilFinished / 1000);
             }
             public void onFinish() {
-                SharedPreferences.Editor editor = sharedpreferences.edit();
-                if(numEquipe == 1){
-                    editor.putInt("SCORE_EQUIPE_1",points);
-                }else {
-                    editor.putInt("SCORE_EQUIPE_2", points);
-                }
-                if(numEquipe == 1) {
-                    editor.putInt("NUM_EQUIPE", 2);
-                }else{
-                    editor.putInt("NUM_EQUIPE",1);
-                }
-                editor.commit();
+
+                ActualiserPoint(numEquipe);
 
                 Intent intent = new Intent(Round.this, LancementJeu.class);
                 intent.putStringArrayListExtra("ArrayList",tabMots );
@@ -80,19 +70,20 @@ public class Round extends AppCompatActivity {
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                points+=1;
                 if(tabMots.size() > 0) tabMots.remove(position);
 
                 if(tabMots.size() == 0) {
+                    timer.cancel();
+                    ActualiserPoint(numEquipe);
                     Intent intent = new Intent(Round.this, AffichageDesScores.class);
                     startActivity(intent);
                 }else{
-
                     if(position >= tabMots.size()){
                         position = 0;
                     }
                     mot.setText(tabMots.get(position));
                 }
-                points+=1;
             }
         });
         passer.setOnClickListener(new View.OnClickListener() {
@@ -107,5 +98,20 @@ public class Round extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void ActualiserPoint(int numEquipe) {
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        if(numEquipe == 1){
+            editor.putInt("SCORE_EQUIPE_1",points);
+        }else {
+            editor.putInt("SCORE_EQUIPE_2", points);
+        }
+        if(numEquipe == 1) {
+            editor.putInt("NUM_EQUIPE", 2);
+        }else{
+            editor.putInt("NUM_EQUIPE",1);
+        }
+        editor.commit();
     }
 }

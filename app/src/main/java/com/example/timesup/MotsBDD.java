@@ -129,7 +129,7 @@ public class MotsBDD {
         Random rand = new Random();
         int randomPosition;
 
-        for(int i=0;i<nbMots;i++){
+        for(int i=1;i<nbMots;i++){
             randomPosition = rand.nextInt(tabTemp.size());
 
             tabMot.add(tabTemp.get(randomPosition));
