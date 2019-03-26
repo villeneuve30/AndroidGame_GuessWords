@@ -141,6 +141,10 @@ public class Round extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        popUp();
+    }
+
+    private void popUp() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle("Quitter");

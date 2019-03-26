@@ -126,7 +126,7 @@ public class MotsBDD {
 
         ArrayList<String> tabMot = new ArrayList<>();
         ArrayList<String> tabBDD = new ArrayList<>();
-        this.afficherTousLesMots();
+
         Cursor data = this.getAllData();
         while(data.moveToNext()){
             if(filtre) {
