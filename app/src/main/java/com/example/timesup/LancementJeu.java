@@ -1,6 +1,8 @@
 package com.example.timesup;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -19,11 +21,13 @@ public class LancementJeu extends AppCompatActivity {
 
     private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
+    private CountDownTimer timer;
 
     ArrayList<String> tabMots;
     Button demarrer;
 
-    TextView titreEquipe;
+    private TextView titreEquipe;
+    private Boolean lancementEnCour;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +37,7 @@ public class LancementJeu extends AppCompatActivity {
         titreEquipe = findViewById(R.id.numero_equipe_xml);
 
         tabMots = getIntent().getStringArrayListExtra("ArrayList");
+        lancementEnCour = false;
 
         //On récupère les paramètres prédédent
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
@@ -49,20 +54,58 @@ public class LancementJeu extends AppCompatActivity {
             public void onClick(View v) {
                 demarrer.setClickable(false);
                 demarrer.setTextColor(Color.BLUE);
-                new CountDownTimer(3000, 1000) {
-
-                    public void onTick(long millisUntilFinished) {
-                        demarrer.setText("début dans : " + millisUntilFinished / 1000);
-                    }
-                    public void onFinish() {
-                        demarrer.setText("GO !");
-                        Intent intent = new Intent(LancementJeu.this, Round.class);
-                        intent.putStringArrayListExtra("ArrayList",tabMots );
-                        startActivity(intent);
-                    }
-                }.start();
+                demarrerTimer();
+                lancementEnCour = true;
             }
         });
 
+    }
+
+    private void demarrerTimer() {
+        timer = new CountDownTimer(3000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                demarrer.setText("début dans : " + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                demarrer.setText("GO !");
+                Intent intent = new Intent(LancementJeu.this, Round.class);
+                intent.putStringArrayListExtra("ArrayList",tabMots );
+                startActivity(intent);
+            }
+        }.start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(this.timer != null){
+            this.timer.cancel();
+        }
+        popUp();
+    }
+
+    private void popUp() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Quitter");
+        builder.setMessage("Voulez-vous revenir au menu ?");
+        builder.setPositiveButton("Quitter",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(LancementJeu.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        builder.setNegativeButton("Reprendre", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if(lancementEnCour)
+                demarrerTimer();
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }

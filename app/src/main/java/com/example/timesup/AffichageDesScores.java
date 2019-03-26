@@ -1,6 +1,8 @@
 package com.example.timesup;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
@@ -67,5 +69,28 @@ public class AffichageDesScores extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("Quitter");
+        builder.setMessage("Voulez-vous revenir au menu ?");
+        builder.setPositiveButton("Quitter",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
+                        startActivity(intent);
+                    }
+                });
+        builder.setNegativeButton("Reprendre", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+            }
+        });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
     }
 }
