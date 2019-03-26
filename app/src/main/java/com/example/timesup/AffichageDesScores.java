@@ -1,9 +1,12 @@
 package com.example.timesup;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -17,6 +20,9 @@ public class AffichageDesScores extends AppCompatActivity {
     TextView score_1;
     TextView score_2;
 
+    Button bouton_menu;
+    Button bouton_recommencer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +31,9 @@ public class AffichageDesScores extends AppCompatActivity {
         sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
         final int score_equipe_1 = sharedpreferences.getInt("SCORE_EQUIPE_1",0 );
         final int score_equipe_2 = sharedpreferences.getInt("SCORE_EQUIPE_2",0 );
+
+        bouton_menu = findViewById(R.id.bouton_revenir_menu);
+        bouton_recommencer = findViewById(R.id.bouton_recommencer);
 
         score_1 = findViewById(R.id.score_equipe_1_xml);
         score_2 = findViewById(R.id.score_equipe_2_xml);
@@ -43,5 +52,20 @@ public class AffichageDesScores extends AppCompatActivity {
         if(score_equipe_1 == score_equipe_2){
             gagnant.setText("EGALITE !");
         }
+
+        bouton_menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
+        bouton_recommencer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(AffichageDesScores.this, ParametrePartie.class);
+                startActivity(intent);
+            }
+        });
     }
 }

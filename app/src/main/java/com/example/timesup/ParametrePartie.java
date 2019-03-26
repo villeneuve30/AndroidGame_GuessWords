@@ -73,7 +73,7 @@ public class ParametrePartie extends AppCompatActivity {
                 editor.putBoolean("FILTRE", filtre.isChecked());
                 editor.commit();
 
-                tabMots = bddTemp.tableauRandomDeMot(Integer.parseInt(nbMots.getText().toString()));
+                tabMots = bddTemp.tableauRandomDeMot(Integer.parseInt(nbMots.getText().toString()),filtre.isChecked());
 
                 Intent intent = new Intent(ParametrePartie.this, LancementJeu.class);
                 intent.putStringArrayListExtra("ArrayList",tabMots );

@@ -122,19 +122,31 @@ public class MotsBDD {
         System.out.println(buffer.toString());
     }
 
-    public ArrayList<String> tableauRandomDeMot(int nbMots){
+    public ArrayList<String> tableauRandomDeMot(int nbMots,Boolean filtre){
 
         ArrayList<String> tabMot = new ArrayList<>();
-        ArrayList<String> tabTemp = new ArrayList<>(Arrays.asList(tableauMots));
+        ArrayList<String> tabBDD = new ArrayList<>();
+        this.afficherTousLesMots();
+        Cursor data = this.getAllData();
+        while(data.moveToNext()){
+            if(filtre) {
+                if (data.getString(2).equals("0")) {
+                    tabBDD.add(data.getString(1));
+                }
+            }else{
+                tabBDD.add(data.getString(1));
+            }
+        }
+
         Random rand = new Random();
         int randomPosition;
 
-        for(int i=1;i<nbMots;i++){
-            randomPosition = rand.nextInt(tabTemp.size());
+        for(int i=0;i<nbMots;i++){
+            randomPosition = rand.nextInt(tabBDD.size());
 
-            tabMot.add(tabTemp.get(randomPosition));
+            tabMot.add(tabBDD.get(randomPosition));
 
-            tabTemp.remove(randomPosition);
+            tabBDD.remove(randomPosition);
         }
         return tabMot;
     }
