@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ public class Round extends AppCompatActivity {
     private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
 
+    private MediaPlayer popSong;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +49,9 @@ public class Round extends AppCompatActivity {
         position = 0;
         bonusPasser = 1;
         nbPass.setText("Restant : "+bonusPasser);
+
+        valider.setSoundEffectsEnabled(false);
+        popSong = MediaPlayer.create(this,R.raw.pop);
 
         tabMots = getIntent().getStringArrayListExtra("ArrayList");
 
@@ -69,6 +74,7 @@ public class Round extends AppCompatActivity {
         valider.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                popSong.start();
                 points+=1;
                 if(tabMots.size() > 0) tabMots.remove(position);
 
@@ -78,6 +84,7 @@ public class Round extends AppCompatActivity {
                     ActualiserPoint(numEquipe);
                     Intent intent = new Intent(Round.this, AffichageDesScores.class);
                     startActivity(intent);
+                    finish();
                 }else{
                     if(position >= tabMots.size()){
                         position = 0;
@@ -120,6 +127,7 @@ public class Round extends AppCompatActivity {
                 Intent intent = new Intent(Round.this, LancementJeu.class);
                 intent.putStringArrayListExtra("ArrayList",tabMots );
                 startActivity(intent);
+                finish();
             }
         }.start();
     }
@@ -154,8 +162,7 @@ public class Round extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         timer.cancel();
-                        Intent intent = new Intent(Round.this, MainActivity.class);
-                        startActivity(intent);
+                        finish();
                     }
                 });
         builder.setNegativeButton("Reprendre", new DialogInterface.OnClickListener() {

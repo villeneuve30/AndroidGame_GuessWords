@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Round">
+    tools:context=".Round"
+    android:background="@drawable/background1">
 
     <TextView
         android:id="@+id/tempsRestant_xml"
@@ -15,7 +16,7 @@
         android:gravity="center"
         android:text="***"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <TextView
@@ -28,7 +29,7 @@
         android:textAllCaps="false"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/black"
-        android:textSize="18sp"
+        android:textSize="24sp"
         android:textStyle="bold" />
 
     <Space

@@ -11,8 +11,6 @@ import android.view.View;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
-   private Button son;
-   private Button vibration;
 
    private Button jouer;
    private Button ajoutMot;
@@ -32,22 +30,10 @@ public class MainActivity extends AppCompatActivity {
         motsBdd = new MotsBDD(this);
         checkFirstRun();
 
-        son = findViewById(R.id.xml_son);
-        vibration = findViewById(R.id.xml_vibration);
         jouer = findViewById(R.id.xml_jouer);
         ajoutMot = findViewById(R.id.xml_ajoutMot);
         regles = findViewById(R.id.xml_regles);
 
-        son.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //active/désactive son
-            }
-        });
-        vibration.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                //active/désactive vibration
-            }
-        });
 
         jouer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -119,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        System.exit(0);
+                        finish();
                     }
                 });
         builder.setNegativeButton("Rester", new DialogInterface.OnClickListener() {

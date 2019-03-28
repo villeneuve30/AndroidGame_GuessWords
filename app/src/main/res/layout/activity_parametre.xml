@@ -2,7 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -19,8 +20,10 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="PARAMETRES DE LA PARTIE"
+            android:textAllCaps="false"
             android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -37,14 +40,18 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="Temps :"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/bouton_moins_temps_xml"
             android:layout_width="3dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:text="-" />
+            android:background="@android:color/holo_red_light"
+            android:text="-"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/label_nbTemps_xml"
@@ -53,14 +60,18 @@
             android:layout_weight="0.1"
             android:gravity="center_horizontal"
             android:text="15"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold|italic" />
 
         <Button
             android:id="@+id/bouton_plus_temps_xml"
             android:layout_width="3dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:text="+" />
+            android:background="@android:color/holo_green_light"
+            android:text="+"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -77,14 +88,18 @@
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="Nombre de mots :"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/bouton_moins_mots_xml"
             android:layout_width="3dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:text="-" />
+            android:background="@android:color/holo_red_light"
+            android:text="-"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/label_nbMots_xml"
@@ -93,14 +108,18 @@
             android:layout_weight="0.1"
             android:gravity="center_horizontal"
             android:text="25"
-            android:textColor="@android:color/holo_blue_dark" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold|italic" />
 
         <Button
             android:id="@+id/bouton_plus_mots_xml"
             android:layout_width="3dp"
             android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
             android:layout_weight="0.5"
-            android:text="+" />
+            android:background="@android:color/holo_green_light"
+            android:text="+"
+            android:textStyle="bold" />
     </LinearLayout>
 
     <LinearLayout
@@ -114,17 +133,20 @@
             android:id="@+id/label_filtre_xml"
             android:layout_width="45dp"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
             android:layout_weight="1"
             android:gravity="center_horizontal"
             android:text="Filtre enfant :"
-            android:textColor="@android:color/black" />
+            android:textColor="@android:color/black"
+            android:textStyle="bold" />
 
         <Switch
             android:id="@+id/switch_filtre_xml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="200dp"
             android:layout_weight="1"
-            android:theme="@style/SwitchTheme"/>
+            android:theme="@style/SwitchTheme" />
     </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
@@ -139,8 +161,9 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:layout_weight="1"
-            android:gravity="center_horizontal"
+            android:background="@android:color/holo_orange_dark"
             android:text="Suivant"
-            android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

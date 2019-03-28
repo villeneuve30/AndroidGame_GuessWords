@@ -16,21 +16,21 @@ import java.util.ArrayList;
 
 public class ParametrePartie extends AppCompatActivity {
 
-    Button suivant;
-    SharedPreferences sharedpreferences;
+    private Button suivant;
+    private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
 
-    Button moinsTemps;
-    Button moinsMots;
+    private Button moinsTemps;
+    private Button moinsMots;
 
-    Button plusTemps;
-    Button plusMots;
+    private Button plusTemps;
+    private Button plusMots;
 
 
-    TextView nbTemps;
-    TextView nbMots;
+    private TextView nbTemps;
+    private TextView nbMots;
 
-    Switch filtre;
+    private Switch filtre;
 
     private ArrayList<String> tabMots;
 
@@ -80,6 +80,7 @@ public class ParametrePartie extends AppCompatActivity {
                 Intent intent = new Intent(ParametrePartie.this, LancementJeu.class);
                 intent.putStringArrayListExtra("ArrayList",tabMots );
                 startActivity(intent);
+                finish();
             }
         });
 
@@ -124,6 +125,10 @@ public class ParametrePartie extends AppCompatActivity {
             }
         });
 
+    }
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 }

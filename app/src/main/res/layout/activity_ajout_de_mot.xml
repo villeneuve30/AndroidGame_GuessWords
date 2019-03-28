@@ -3,13 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background1">
 
     <TextView
         android:id="@+id/titre_ajoutMot_xml"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
+        android:layout_weight="2"
         android:gravity="center"
         android:text="Ajoute tes propres mots !"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
@@ -19,7 +20,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.1"
+        android:layout_weight="2.2"
         android:orientation="horizontal">
 
         <EditText
@@ -30,14 +31,15 @@
             android:layout_marginRight="20dp"
             android:layout_weight="1"
             android:hint="Ecris ton mot ici"
-            android:inputType="text" />
+            android:inputType="text"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3.2"
+        android:layout_weight="2.3"
         android:orientation="horizontal">
 
         <TextView
@@ -46,7 +48,10 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
             android:layout_weight="1"
-            android:text="Filtre enfant ?" />
+            android:text="Filtre enfant ?"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
         <Switch
             android:id="@+id/filtre_enfant_xml"
@@ -60,18 +65,45 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bouton_ajouter_xml"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:layout_weight="3"
-        android:text="Ajouter" />
-
-    <ListView
-        android:id="@+id/listeDeMot_xml"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="40dp"
-        android:layout_weight="1" />
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/bouton_ajouter_xml"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_weight="1.2"
+            android:background="@android:color/holo_green_light"
+            android:text="Ajouter"
+            android:textStyle="bold" />
+
+        <ListView
+            android:id="@+id/listeDeMot_xml"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="40dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="0.6"
+            android:background="@color/legerBleu" />
+
+        <Button
+            android:id="@+id/bouton_supprimer_xml"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="right|top"
+            android:layout_marginRight="40dp"
+            android:layout_marginBottom="20dp"
+            android:layout_weight="1.3"
+            android:background="@android:color/holo_red_light"
+            android:text="Supprimer"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 </LinearLayout>

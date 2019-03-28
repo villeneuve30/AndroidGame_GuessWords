@@ -23,8 +23,8 @@ public class LancementJeu extends AppCompatActivity {
     public static final String MyPREFERENCES = "MyPrefs" ;
     private CountDownTimer timer;
 
-    ArrayList<String> tabMots;
-    Button demarrer;
+    private ArrayList<String> tabMots;
+    private Button demarrer;
 
     private TextView titreEquipe;
     private Boolean lancementEnCour;
@@ -72,6 +72,7 @@ public class LancementJeu extends AppCompatActivity {
                 Intent intent = new Intent(LancementJeu.this, Round.class);
                 intent.putStringArrayListExtra("ArrayList",tabMots );
                 startActivity(intent);
+                finish();
             }
         }.start();
     }
@@ -93,8 +94,7 @@ public class LancementJeu extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(LancementJeu.this, MainActivity.class);
-                        startActivity(intent);
+                        finish();
                     }
                 });
         builder.setNegativeButton("Reprendre", new DialogInterface.OnClickListener() {

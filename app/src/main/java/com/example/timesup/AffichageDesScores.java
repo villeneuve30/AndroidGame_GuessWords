@@ -18,12 +18,12 @@ public class AffichageDesScores extends AppCompatActivity {
     private SharedPreferences sharedpreferences;
     public static final String MyPREFERENCES = "MyPrefs" ;
 
-    TextView gagnant;
-    TextView score_1;
-    TextView score_2;
+    private TextView gagnant;
+    private TextView score_1;
+    private TextView score_2;
 
-    Button bouton_menu;
-    Button bouton_recommencer;
+    private Button bouton_menu;
+    private Button bouton_recommencer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +60,7 @@ public class AffichageDesScores extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
                 startActivity(intent);
+                finish();
             }
         });
         bouton_recommencer.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +68,7 @@ public class AffichageDesScores extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(AffichageDesScores.this, ParametrePartie.class);
                 startActivity(intent);
+                finish();
             }
         });
     }
@@ -86,6 +88,7 @@ public class AffichageDesScores extends AppCompatActivity {
                     public void onClick(DialogInterface dialog, int which) {
                         Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
         builder.setNegativeButton("Reprendre", new DialogInterface.OnClickListener() {

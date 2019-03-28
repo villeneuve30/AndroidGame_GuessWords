@@ -35,7 +35,7 @@ public class MotsBDD {
             "Éclairage","Fenêtre","Nourriture","Couche","Girafe","Étoile","Serpent","Ouïe","Malade","Sale",
             "Laitue","Suivre","Burger","Sifflet","Laid","Glace","Guitare","Étudiant","Téléphone","Fromage","Trottoir",
             "Baignoire","Casque","Charpentier","Rivière","Maillot de bain","Ciseaux","Propre","Poussin","Baleine",
-            "Trompette","Diapositive","Panda","Hélicoptère","Cloche","Poulpe","Escargot","Citrouille"};
+            "Trompette","Diapositive","Panda","Hélicoptère","Cloche","Poulpe","Escargot"};
 
     private SQLiteDatabase bdd;
     private SQLiteDataBaseHelper maBaseSQLite;
@@ -75,12 +75,12 @@ public class MotsBDD {
         //un mot pourrat soit être ajouté, soit supprimé pour simplifier l'ajout de mot
     }*/
 
-    public int removeMotWithID(int id){
-        return bdd.delete(TABLE_MOTS, COL_ID + " = " +id,null);
+    public int removeMotWithString(String nomMot){
+        return this.bdd.delete(TABLE_MOTS, COL_MOT + " like '" + nomMot +"'",null);
     }
 
     public Mot getMotWithTexte(String texte){
-        Cursor c = bdd.query(TABLE_MOTS, new String[]{COL_ID, COL_MOT, COL_FILTRE},COL_MOT + " LIKE \"" + texte +"\"", null, null, null, null);
+        Cursor c = bdd.query(TABLE_MOTS, new String[]{COL_ID, COL_MOT, COL_FILTRE},COL_MOT + " LIKE '" + texte +"'", null, null, null, null);
         return cursorToMot(c);
     }
 
@@ -120,6 +120,7 @@ public class MotsBDD {
             buffer.append("Filtre enfant : " + data.getString(2) + "\n");
         }
         System.out.println(buffer.toString());
+        System.out.println("taille tableau de base : "+tableauMots.length);
     }
 
     public ArrayList<String> tableauRandomDeMot(int nbMots,Boolean filtre){

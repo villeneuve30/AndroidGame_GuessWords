@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AffichageDesScores"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/background1">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -22,6 +23,7 @@
             android:text="L'EQUIPE * GAGNE"
             android:textAppearance="@style/TextAppearance.AppCompat.SearchResult.Title"
             android:textColor="@android:color/holo_green_dark"
+            android:textSize="24sp"
             android:textStyle="bold" />
     </LinearLayout>
 
@@ -44,7 +46,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Equipe 1"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/label_score_1"
@@ -52,7 +55,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="Score :"
-                android:textColor="@android:color/holo_orange_dark" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_equipe_1_xml"
@@ -92,7 +96,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Equipe 2"
-                android:textAppearance="@style/TextAppearance.AppCompat.Title" />
+                android:textAppearance="@style/TextAppearance.AppCompat.Title"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/label_score_2"
@@ -100,7 +105,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="0.5"
                 android:text="Score :"
-                android:textColor="@android:color/holo_orange_dark" />
+                android:textColor="@android:color/black"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/score_equipe_2_xml"
