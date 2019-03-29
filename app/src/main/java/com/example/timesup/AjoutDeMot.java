@@ -30,17 +30,17 @@ public class AjoutDeMot extends AppCompatActivity {
     private Button boutonAjouter;
     private Switch filtreEnfant;
     private Button boutonSupprimer;
+    private TextView motASupprimer;
 
     private ArrayList<String> listItems=new ArrayList<>();
     private ArrayList<String> tousLesMots = new ArrayList<>();
     private ArrayAdapter<String> adapter;
 
     private int positionItem;
-    private boolean isItemSelected;
 
     private MotsBDD motBDD;
-    MediaPlayer songSupprimer;
-    MediaPlayer songAjouter;
+    private MediaPlayer songSupprimer;
+    private MediaPlayer songAjouter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,18 +55,16 @@ public class AjoutDeMot extends AppCompatActivity {
         boutonAjouter = findViewById(R.id.bouton_ajouter_xml);
         filtreEnfant = findViewById(R.id.filtre_enfant_xml);
         boutonSupprimer = findViewById(R.id.bouton_supprimer_xml);
+        motASupprimer = findViewById(R.id.text_motSelected_xml);
 
-        isItemSelected =false;
+        boutonSupprimer.setEnabled(false);
+
 
         songSupprimer = MediaPlayer.create(this,R.raw.corbeille);
         songAjouter = MediaPlayer.create(this,R.raw.triangle );
         boutonAjouter.setSoundEffectsEnabled(false);
         boutonSupprimer.setSoundEffectsEnabled(false);
 
-        adapter=new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1,
-                listItems);
-        listeMots.setAdapter(adapter);
 
         motBDD = new MotsBDD(this);
         Cursor data = motBDD.getAllData();
@@ -74,16 +72,21 @@ public class AjoutDeMot extends AppCompatActivity {
         while(data.moveToNext()){
             tousLesMots.add(data.getString(1));
             id = Integer.parseInt(data.getString(0));
-            if(id > 101) {
+            if(id > 100) {
                 listItems.add(data.getString(1));
             }
         }
+
+        adapter=new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1,
+                listItems);
+        listeMots.setAdapter(adapter);
 
         boutonAjouter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String mot = inputMot.getText().toString();
-                if(!mot.equals("") && !mot.equals(" ") && !tousLesMots.contains(mot) && !mot.contains("'") && !mot.contains("\"")) {
+                if(!mot.equals("") && !mot.equals(" ") && !tousLesMots.contains(mot) && !mot.contains("'") && !mot.contains("\"") && mot.length() <= 10) {
                     songAjouter.start();
                     //Ajouter mot a la listView
                     inputMot.setText("");
@@ -108,6 +111,10 @@ public class AjoutDeMot extends AppCompatActivity {
                         Toast.makeText(AjoutDeMot.this, "Tu ne peux pas utiliser de caractères spéciaux",
                                 Toast.LENGTH_LONG).show();
                     }
+                    if(mot.length() > 10){
+                        Toast.makeText(AjoutDeMot.this, "Ton mot ne peut avoir plus de 10 caractères",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
 
             }
@@ -117,14 +124,12 @@ public class AjoutDeMot extends AppCompatActivity {
 
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                for (int i = 0; i < listeMots.getChildCount(); i++) {
-                    if(position == i ){
-                        listeMots.getChildAt(i).setBackgroundColor(Color.RED);
-                    }else{
-                        listeMots.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-                }
-                isItemSelected = true;
+                boutonSupprimer.setEnabled(true);
+
+                String selectedFromList = listItems.get(position);
+
+                motASupprimer.setText("Supprimer '"+selectedFromList+"' ?");
+
                 positionItem = position;
             }
         });
@@ -132,6 +137,7 @@ public class AjoutDeMot extends AppCompatActivity {
         boutonSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                boutonSupprimer.setEnabled(false);
                 songSupprimer.start();
 
                 String selectedFromList =listItems.get(positionItem);
