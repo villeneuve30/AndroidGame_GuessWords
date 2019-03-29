@@ -131,7 +131,7 @@
 
         <TextView
             android:id="@+id/label_filtre_xml"
-            android:layout_width="45dp"
+            android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_marginLeft="45dp"
             android:layout_weight="1"
@@ -144,7 +144,7 @@
             android:id="@+id/switch_filtre_xml"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginRight="200dp"
+            android:layout_marginRight="100dp"
             android:layout_weight="1"
             android:theme="@style/SwitchTheme" />
     </LinearLayout>

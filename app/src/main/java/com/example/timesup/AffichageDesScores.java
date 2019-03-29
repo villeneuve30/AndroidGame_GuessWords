@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -27,6 +28,9 @@ public class AffichageDesScores extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_affichage_des_scores);
 
@@ -58,8 +62,6 @@ public class AffichageDesScores extends AppCompatActivity {
         bouton_menu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
-                startActivity(intent);
                 finish();
             }
         });
@@ -86,8 +88,6 @@ public class AffichageDesScores extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        Intent intent = new Intent(AffichageDesScores.this, MainActivity.class);
-                        startActivity(intent);
                         finish();
                     }
                 });

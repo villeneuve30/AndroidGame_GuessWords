@@ -4,10 +4,11 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
@@ -22,8 +23,13 @@ public class MainActivity extends AppCompatActivity {
 
     private MotsBDD motsBdd;
 
+    private MediaPlayer bienvenue;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -34,6 +40,8 @@ public class MainActivity extends AppCompatActivity {
         ajoutMot = findViewById(R.id.xml_ajoutMot);
         regles = findViewById(R.id.xml_regles);
 
+        bienvenue = MediaPlayer.create(this,R.raw.guitare);
+        bienvenue.start();
 
         jouer.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -77,10 +85,9 @@ public class MainActivity extends AppCompatActivity {
 
             // TODO This is a new install (or the user cleared the shared preferences)
 
-            Mot mot1 = new Mot("Girafe",false);
-
             motsBdd.insererLesMotsDeBase();
             motsBdd.afficherTousLesMots();
+            popUpPremierLancement();
 
 
         } else if (currentVersionCode > savedVersionCode) {
@@ -93,10 +100,10 @@ public class MainActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        popUp();
+        popUpQuitter();
     }
 
-    private void popUp() {
+    private void popUpQuitter() {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle("Sortir du jeu");
@@ -113,6 +120,22 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
             }
         });
+
+        AlertDialog dialog = builder.create();
+        dialog.show();
+    }
+
+    private void popUpPremierLancement() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle("");
+        builder.setMessage("Bienvenue, amusez-vous bien dans le TIME'S UP !");
+        builder.setPositiveButton("C'est parti !",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
 
         AlertDialog dialog = builder.create();
         dialog.show();

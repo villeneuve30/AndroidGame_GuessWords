@@ -2,12 +2,14 @@ package com.example.timesup;
 
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Parcelable;
 import android.support.annotation.ColorLong;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -37,9 +39,14 @@ public class AjoutDeMot extends AppCompatActivity {
     private boolean isItemSelected;
 
     private MotsBDD motBDD;
+    MediaPlayer songSupprimer;
+    MediaPlayer songAjouter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        getSupportActionBar().hide();
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajout_de_mot);
 
@@ -50,6 +57,11 @@ public class AjoutDeMot extends AppCompatActivity {
         boutonSupprimer = findViewById(R.id.bouton_supprimer_xml);
 
         isItemSelected =false;
+
+        songSupprimer = MediaPlayer.create(this,R.raw.corbeille);
+        songAjouter = MediaPlayer.create(this,R.raw.triangle );
+        boutonAjouter.setSoundEffectsEnabled(false);
+        boutonSupprimer.setSoundEffectsEnabled(false);
 
         adapter=new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1,
@@ -72,6 +84,7 @@ public class AjoutDeMot extends AppCompatActivity {
             public void onClick(View v) {
                 String mot = inputMot.getText().toString();
                 if(!mot.equals("") && !mot.equals(" ") && !tousLesMots.contains(mot) && !mot.contains("'") && !mot.contains("\"")) {
+                    songAjouter.start();
                     //Ajouter mot a la listView
                     inputMot.setText("");
                     listItems.add(mot);
@@ -119,6 +132,7 @@ public class AjoutDeMot extends AppCompatActivity {
         boutonSupprimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                songSupprimer.start();
 
                 String selectedFromList =listItems.get(positionItem);
                 motBDD.open();
