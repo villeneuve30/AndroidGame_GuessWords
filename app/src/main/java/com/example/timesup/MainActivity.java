@@ -129,7 +129,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setCancelable(true);
         builder.setTitle("");
-        builder.setMessage("Bienvenue, amusez-vous bien dans le TIME'S UP !");
+        builder.setMessage("Bienvenue, amusez-vous bien dans Devine Mot !");
         builder.setPositiveButton("C'est parti !",
                 new DialogInterface.OnClickListener() {
                     @Override
