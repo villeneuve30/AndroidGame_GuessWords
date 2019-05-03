@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -139,6 +141,8 @@ public class AjoutDeMot extends AppCompatActivity {
             public void onClick(View v) {
                 boutonSupprimer.setEnabled(false);
                 songSupprimer.start();
+                Animation animation = AnimationUtils.loadAnimation(AjoutDeMot.this,R.anim.bounce );
+                boutonSupprimer.startAnimation(animation);
 
                 String selectedFromList =listItems.get(positionItem);
                 motBDD.open();
@@ -148,6 +152,7 @@ public class AjoutDeMot extends AppCompatActivity {
 
                 listItems.remove(positionItem);
                 adapter.notifyDataSetChanged();
+                motASupprimer.setText("Sélectionner et supprimer");
             }
         });
 
